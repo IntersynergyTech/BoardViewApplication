@@ -1,0 +1,27 @@
+﻿@page
+@using System.Globalization
+@model IndexModel
+@{
+    ViewData["Title"] = "Intersynergy Board";
+}
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+
+        <th>Player</th>
+        <th>Position</th>
+    </tr>
+    </thead>
+    @foreach (var player in @Model.asd)
+    {
+        <tr>
+            <td>
+                @player.realName
+            </td>
+            <td>
+                @player.currentPosition.ToString("C2", new CultureInfo("en-GB")) &nbsp;
+                <p style="font-style:italic; color:darkgrey">(@player.potentialPosition.ToString("C2", new CultureInfo("en-GB")))</p>
+            </td>
+        </tr>
+    }
+</table>
