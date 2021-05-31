@@ -18,7 +18,7 @@ namespace BoardViewApplication.Pages
         {
             _logger = logger;
             var client = new HttpClient();
-            var response = client.GetAsync("https://cards.floul.dev/api/Player").Result;
+            var response = client.GetAsync("https://localhost:5001/api/v2.0/NewPlayer").Result;
             var asd1 = response.Content.ReadAsStringAsync().Result;
             var results = JsonConvert.DeserializeObject<List<Root>>(asd1);
             asd = results;
@@ -30,18 +30,13 @@ namespace BoardViewApplication.Pages
 
         public List<Root> asd;
     }
-    public class Root    {
-        public int playerId { get; set; } 
-        public string userName { get; set; } 
-        public string emailAddress { get; set; } 
-        public string realName { get; set; } 
-        public string password { get; set; } 
-        public DateTime? lastPaid { get; set; } 
-        public bool hasAdminPermission { get; set; } 
-        public bool archived { get; set; } 
-        public DateTime? archiveTime { get; set; } 
-        public decimal currentPosition { get; set; } 
-        public decimal potentialPosition { get; set; }
-
+    public class Root
+    {
+        public int id { get; set; }
+        public string userName { get; set; }
+        public string realName { get; set; }
+        public double currentPosition { get; set; }
+        public double potentialPosition { get; set; }
+        public bool hideFromView { get; set; }
     }
 }
