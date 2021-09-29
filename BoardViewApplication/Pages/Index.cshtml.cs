@@ -18,7 +18,7 @@ namespace BoardViewApplication.Pages
         {
             _logger = logger;
             var client = new HttpClient();
-            var response = client.GetAsync("https://localhost:5001/api/v2.0/NewPlayer").Result;
+            var response = client.GetAsync("https://cards.floul.dev/api/v2.0/NewPlayer").Result;
             var asd1 = response.Content.ReadAsStringAsync().Result;
             var results = JsonConvert.DeserializeObject<List<Root>>(asd1);
             asd = results;
